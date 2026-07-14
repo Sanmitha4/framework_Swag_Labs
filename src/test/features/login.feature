@@ -25,6 +25,7 @@ Feature: User Login Authentication
     Given User navigates to the Sauce Demo login page
     When User attempts to login with credentials from test data "empty_username"
     Then An error message should be displayed on the login page
+    
 
   @Key:Login_05 @regression @sauce @negative
   Scenario: Login fails with an empty password field
