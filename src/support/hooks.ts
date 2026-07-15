@@ -19,7 +19,7 @@ import { getEnv } from "../helper/env/env";
 import { HTMLSubStepLogger } from "./htmllSubStepLogger";
 import LoginPage from "../pages/loginPage";
 //import ContactPage from "../pages/contactPage";
-import InventoryPage from "../pages/inventoryPages";
+
 
 // ----------------- Global Variables -----------------
 let browser: Browser;
@@ -127,7 +127,7 @@ Before(async function ({ pickle }) {
     fixture.pages = {
         loginPage: new LoginPage(fixture.page, fixture.subStepLogger),
         //contactPage: new ContactPage(fixture.page, fixture.subStepLogger),
-        inventoryPage: new InventoryPage(fixture.page, fixture.subStepLogger),
+
     };
     fixture.logger?.info('Page objects initialized for scenario.');
 });
