@@ -4,7 +4,7 @@ import { HTMLSubStepLogger } from "../support/htmllSubStepLogger";
 
 export default class InventoryPage extends PlaywrightWrapper {
 
-    // 🎯 Selectors mapped from the inventory visuals
+    // 🎯 Core element arrays from the page layout
     private readonly productItems = "div.inventory_item";
     private readonly productNames = "div.inventory_item_name";
     private readonly productPrices = "div.inventory_item_price";
@@ -17,18 +17,33 @@ export default class InventoryPage extends PlaywrightWrapper {
         super(page, logger);
     }
 
-    // Dynamic locator generator to target a specific item's button based on its name
+    // ================================================================
+    // 🔍 Dynamic Selector Generators using "has-text" and "nth"
+    // ================================================================
+    
+    /**
+     * Finds the parent item container holding the matching text,
+     * then uses >> nth=0 to grab the absolute first button inside it safely.
+     */
     private getItemActionButton(itemName: string) {
-        return `//div[text()='${itemName}']/ancestor::div[@class='inventory_item_description']//button`;
+        return `div.inventory_item:has-text("${itemName}") >> button >> nth=0`;
     }
 
-    // Dynamic locator generator to target a product title link
+    /**
+     * Locates the name container with the matching item text block,
+     * targeting index 0 to guarantee strict mode compliance.
+     */
     private getItemTitleLink(itemName: string) {
-        return `//div[text()='${itemName}']`;
+        return `div.inventory_item_name:has-text("${itemName}") >> nth=0`;
     }
+
+    // ================================================================
+    // ⚙️ Action Methods
+    // ================================================================
 
     async verifyCatalogIsDisplayed(): Promise<boolean> {
-        return await this.elementVisible(this.productItems);
+        // Appends nth=0 to ensure we check visibility of only one element, bypassing strict mode limits
+        return await this.elementVisible(`${this.productItems} >> nth=0`);
     }
 
     async selectSortOption(optionText: string) {

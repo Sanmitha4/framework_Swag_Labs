@@ -18,6 +18,7 @@ import * as path from "path";
 import { getEnv } from "../helper/env/env";
 import { HTMLSubStepLogger } from "./htmllSubStepLogger";
 import LoginPage from "../pages/loginPage";
+import InventoryPage from "../pages/inventoryPages";
 //import ContactPage from "../pages/contactPage";
 
 
@@ -126,6 +127,7 @@ Before(async function ({ pickle }) {
     // Initialize page objects for this scenario and attach the shared subStepLogger
     fixture.pages = {
         loginPage: new LoginPage(fixture.page, fixture.subStepLogger),
+        inventoryPage: new InventoryPage(fixture.page, fixture.subStepLogger),
         //contactPage: new ContactPage(fixture.page, fixture.subStepLogger),
 
     };
