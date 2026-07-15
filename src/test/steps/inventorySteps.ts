@@ -22,13 +22,22 @@ Then('The catalog grid should display valid item listings', async function () {
 });
 
 Then('Every item should showcase a unique image, product title, and description', async function () {
-    await Assert.assertElementExists(fixture.page, "img.inventory_item_img", fixture.logger);
-    await Assert.assertElementExists(fixture.page, "div.inventory_item_name", fixture.logger);
-    await Assert.assertElementExists(fixture.page, "div.inventory_item_desc", fixture.logger);
+    // Locates all item elements matching the selector block array
+    const totalItems = await fixture.page.locator("div.inventory_item").count();
+    
+    for (let i = 0; i < totalItems; i++) {
+        await Assert.assertElementExists(fixture.page, `div.inventory_item >> nth=${i} >> img.inventory_item_img`, fixture.logger);
+        await Assert.assertElementExists(fixture.page, `div.inventory_item >> nth=${i} >> div.inventory_item_name`, fixture.logger);
+        await Assert.assertElementExists(fixture.page, `div.inventory_item >> nth=${i} >> div.inventory_item_desc`, fixture.logger);
+    }
 });
 
 Then('Every item details card should display a formatted cost matrix', async function () {
-    await Assert.assertElementExists(fixture.page, "div.inventory_item_price", fixture.logger);
+    const totalItems = await fixture.page.locator("div.inventory_item").count();
+    
+    for (let i = 0; i < totalItems; i++) {
+        await Assert.assertElementExists(fixture.page, `div.inventory_item >> nth=${i} >> div.inventory_item_price`, fixture.logger);
+    }
 });
 
 When('User selects the sorting filter criteria {string}', async function (criteria) {
