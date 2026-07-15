@@ -1,11 +1,10 @@
-
-
-
 Key|Env|ProductName|ExpectedStatus|Username|Password
 Login_01|STG|SauceDemo||standard_user|secret_sauce
-Login_02|STG|SauceDemo||locked_out_user|secret_sauce
-Login_03|STG|SauceDemo||invalid_user|wrong_sauce
-Login_04|STG|SauceDemo|||secret_sauce
-Login_05|STG|SauceDemo||standard_user|
-Login_06|STG|SauceDemo||performance_glitch_user|secret_sauce
-Login_07|STG|SauceDemo||problem_user|secret_sauce
+Inv_01|STG|SauceDemo||standard_user|secret_sauce
+Inv_02|STG|SauceDemo||standard_user|secret_sauce
+Inv_03|STG|Sauce Labs Onesie||standard_user|secret_sauce
+Inv_04|STG|Sauce Labs Backpack||standard_user|secret_sauce
+Inv_05|STG|Sauce Labs Backpack||standard_user|secret_sauce
+Inv_06|STG|SauceDemo||standard_user|secret_sauce
+
+
