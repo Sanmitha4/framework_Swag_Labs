@@ -46,6 +46,7 @@ export default class InventoryPage extends PlaywrightWrapper {
         return await this.elementVisible(`${this.productItems} >> nth=0`);
     }
 
+    
     async selectSortOption(optionText: string) {
         await this.selectOption(this.sortDropdown, optionText, "Product Sort Dropdown");
     }
